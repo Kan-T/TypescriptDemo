@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function mοusedοwn (e) {
+      var target = e.currentTarget;
+      var isOpen = target.getAttribute("isOpen")
+      if(isOpen !== "yes") {
+        target.setAttribute("size", 6);
+        target.setAttribute("isOpen", "yes");
+        setTimeout(() => {
+          target.focus();
+        })
+      }
+    }
+    function closeSelect (e) {
+      var target = e.currentTarget;
+      target.setAttribute("size", 0);
+      target.setAttribute("isOpen", "no");
+      target.blur();
+    }
+    function clickHandler (e) {
+      console.log(e.path)
+      var optIdx = e.path.findIndex(dom => dom.tagName.toLowerCase() === "option")
+      if(optIdx > -1) {
+        closeSelect(e)
+      }
+    }
+  </script>
+</head>
+<body>
+  <div style="width: 600px; height: 800px; background: #ccc; display: flex; align-items: center; justify-content: center;">
+    <select id="bank_list_id" onmousedown="mοusedοwn(event)" onblur="closeSelect(event)" onclick="clickHandler(event)">
+      <option value="1">民生银行</option>
+      <option value="2">工商银行</option>
+      <option value="3">中国银行</option>
+      <option value="4">建设银行</option>
+      <option value="5">交通银行</option>
+      <option value="6">招商银行</option>
+      <option value="7">兴业银行</option>
+      <option value="8">中信银行</option>
+      <option value="9">光大银行</option>
+      <option value="10">平安银行</option>
+      <option value="11">华夏银行</option>
+      <option value="12">邮储银行</option>
+      <option value="13">北京银行</option>
+      <option value="14">广发银行</option>
+      <option value="15">浦发银行</option>
+      <option value="16">浙商银行</option>
+      <option value="17">徽商银行</option>
+      <option value="18">江苏银行</option>
+      <option value="19">上海银行</option>
+      <option value="20">南京银行</option>
+    </select>
+  </div>
+  <script></script>
+</body>
+</html>
